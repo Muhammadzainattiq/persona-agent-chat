@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Brain, Sparkles, Heart, Zap } from 'lucide-react';
+import { Brain, Sparkles, Heart, Zap, MessageSquare } from 'lucide-react';
 
 const LandingPage: React.FC = () => {
   const navigate = useNavigate();
