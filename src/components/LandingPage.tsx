@@ -1,8 +1,9 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Brain, Sparkles, Heart, Zap, MessageSquare } from 'lucide-react';
+import { Brain, Sparkles, Heart, Zap, MessageSquare, Bot, Cpu } from 'lucide-react';
 
 const LandingPage: React.FC = () => {
   const navigate = useNavigate();
@@ -65,6 +66,19 @@ const LandingPage: React.FC = () => {
           <Sparkles size={100} />
         </motion.div>
 
+        {/* AI Badge */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+          className="mb-6 mx-auto w-fit"
+        >
+          <div className="px-4 py-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-medium flex items-center shadow-lg">
+            <Bot className="mr-2 h-5 w-5" />
+            <span>Powered by AI</span>
+          </div>
+        </motion.div>
+
         <motion.div variants={itemVariants} className="mb-6 relative">
           <div className="absolute inset-0 blur-3xl bg-violet-300/20 rounded-full transform -translate-y-1/2"></div>
           <h1 className="text-5xl md:text-6xl font-bold mb-4 relative">
@@ -80,7 +94,7 @@ const LandingPage: React.FC = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto relative z-10">
-            Have an insightful conversation with our AI and uncover the unique traits that make you who you are.
+            Have an insightful conversation with our <span className="font-semibold text-indigo-600">AI personality agent</span> and uncover the unique traits that make you who you are.
           </p>
         </motion.div>
 
@@ -94,8 +108,8 @@ const LandingPage: React.FC = () => {
               onClick={startPersonalityTest}
               className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white py-8 px-10 text-lg md:text-xl rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 font-medium"
             >
-              <Sparkles className="mr-2 h-6 w-6" /> 
-              Begin Your Personality Journey
+              <Cpu className="mr-2 h-6 w-6" /> 
+              Find your Personality Type with AI
             </Button>
           </motion.div>
         </motion.div>
