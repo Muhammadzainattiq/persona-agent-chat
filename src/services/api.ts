@@ -1,4 +1,3 @@
-
 import { v4 as uuidv4 } from 'uuid';
 
 // Type definitions for our API responses
@@ -22,6 +21,9 @@ export interface ChatResponse {
   personality_type_data?: PersonalityTypeData;
 }
 
+// Base API endpoint
+const API_BASE_URL = 'https://zainattiq-personaagent.hf.space';
+
 // Generate a user ID for the conversation
 export const generateUserId = (): string => {
   return uuidv4();
@@ -30,33 +32,28 @@ export const generateUserId = (): string => {
 // Call the agent API
 export const callAgentApi = async (message: string, userId: string): Promise<ChatResponse> => {
   try {
-    // In a real implementation, this would call the localhost:8000/call_agent endpoint
-    // For now, we'll mock the API call since we can't reach localhost:8000
-    
-    // For testing purposes, we'll simulate API behavior
-    // This would be replaced with a real fetch call in production
     console.log(`Calling API with message: ${message} and userId: ${userId}`);
     
-    // Mock response for demo purposes
-    // In production, replace with:
-    // const response = await fetch('http://localhost:8000/call_agent', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ prompt: message, user_id: userId })
-    // });
-    // return await response.json();
+    const response = await fetch(`${API_BASE_URL}/call_agent`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt: message, user_id: userId })
+    });
     
-    // Mock response that simulates the API behavior for demo
-    // This would be removed in production when the actual API is available
-    return mockApiResponse(message, userId);
+    if (!response.ok) {
+      throw new Error(`API responded with status: ${response.status}`);
+    }
+    
+    return await response.json();
   } catch (error) {
     console.error('API call failed:', error);
-    throw new Error('Failed to communicate with the personality agent.');
+    
+    // Fallback to mock response if API call fails
+    return mockApiResponse(message, userId);
   }
 };
 
-// Mock API response for demonstration purposes
-// This would be replaced with actual API calls in production
+// Mock API response for fallback when the actual API is unavailable
 const mockApiResponse = (message: string, userId: string): ChatResponse => {
   // Simple chat flow simulation
   const lowerMessage = message.toLowerCase();
