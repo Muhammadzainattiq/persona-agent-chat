@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
@@ -104,14 +105,14 @@ const ChatInterface: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-gradient-to-br from-violet-100 via-pink-50 to-blue-100">
+    <div className="flex flex-col h-screen bg-gradient-to-br from-primary/10 via-background to-secondary/10">
       {/* Chat Header */}
-      <header className="bg-white shadow-md py-4 px-6 border-b border-violet-100">
+      <header className="bg-white shadow-md py-4 px-6 border-b border-primary/10">
         <div className="flex items-center justify-center md:justify-start max-w-3xl mx-auto w-full">
           <div className="bg-accent/10 p-2 rounded-full mr-3">
             <MessageSquare className="h-6 w-6 text-accent" />
           </div>
-          <h1 className="text-xl font-semibold bg-gradient-to-r from-violet-700 to-indigo-500 text-transparent bg-clip-text">PersonaAgent</h1>
+          <h1 className="text-xl font-semibold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text">PersonaAgent</h1>
         </div>
       </header>
 
@@ -127,10 +128,10 @@ const ChatInterface: React.FC = () => {
             <div className="inline-flex items-center justify-center p-2 bg-accent/10 rounded-full mb-3">
               <Sparkles className="h-6 w-6 text-accent animate-pulse" />
             </div>
-            <h2 className="text-lg md:text-xl font-medium text-gray-700">
+            <h2 className="text-lg md:text-xl font-medium text-foreground">
               Discover your personality through conversation
             </h2>
-            <p className="text-sm text-gray-500 mt-1">
+            <p className="text-sm text-muted-foreground mt-1">
               Chat with me to reveal your personality type
             </p>
           </motion.div>
@@ -147,7 +148,7 @@ const ChatInterface: React.FC = () => {
                 className={`px-4 py-3 max-w-[85%] md:max-w-[75%] shadow-md
                   ${message.role === 'user' 
                     ? 'bg-accent text-white rounded-t-lg rounded-bl-lg rounded-br-sm border-accent' 
-                    : 'bg-white rounded-t-lg rounded-br-lg rounded-bl-sm border-violet-50'}
+                    : 'bg-white rounded-t-lg rounded-br-lg rounded-bl-sm border-primary/10'}
                 `}
               >
                 <p className="whitespace-pre-wrap">{message.content}</p>
@@ -161,7 +162,7 @@ const ChatInterface: React.FC = () => {
               animate={{ opacity: 1 }}
               className="flex justify-start"
             >
-              <Card className="px-6 py-4 bg-white rounded-lg shadow-md border-violet-50">
+              <Card className="px-6 py-4 bg-white rounded-lg shadow-md border-primary/10">
                 <div className="flex space-x-2">
                   <div className="w-2 h-2 rounded-full bg-accent loading-dot"></div>
                   <div className="w-2 h-2 rounded-full bg-accent loading-dot"></div>
@@ -179,12 +180,12 @@ const ChatInterface: React.FC = () => {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="p-4 bg-gradient-to-r from-violet-500 via-purple-500 to-indigo-500"
+          className="p-4 bg-gradient-to-r from-primary via-secondary to-accent"
         >
           <div className="max-w-3xl mx-auto">
             <Button 
               onClick={handleCompleteAnalysis} 
-              className="w-full bg-white hover:bg-white/90 text-accent font-medium py-6 text-lg rounded-xl shadow-lg border border-violet-100 hover:shadow-xl transition-all"
+              className="w-full bg-white hover:bg-white/90 text-primary font-medium py-6 text-lg rounded-xl shadow-lg border border-primary/10 hover:shadow-xl transition-all"
             >
               <Sparkles className="mr-2 h-5 w-5" />
               Complete Analysis & View Your Personality Type
@@ -194,7 +195,7 @@ const ChatInterface: React.FC = () => {
       )}
 
       {/* Chat Input */}
-      <div className="p-4 bg-white border-t border-violet-100">
+      <div className="p-4 bg-white border-t border-primary/10">
         <form onSubmit={handleSendMessage} className="max-w-3xl mx-auto flex space-x-2">
           <Input
             ref={inputRef}
@@ -202,7 +203,7 @@ const ChatInterface: React.FC = () => {
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type your message here..."
             disabled={isLoading || isComplete}
-            className="flex-1 border-violet-200 focus-visible:ring-accent"
+            className="flex-1 border-primary/20 focus-visible:ring-accent"
           />
           <Button 
             type="submit" 
