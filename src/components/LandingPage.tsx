@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Brain, Sparkles, Heart, Zap } from 'lucide-react';
 
 const LandingPage: React.FC = () => {
   const navigate = useNavigate();
@@ -11,50 +12,136 @@ const LandingPage: React.FC = () => {
     navigate('/chat');
   };
 
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-violet-50 to-blue-50 flex flex-col items-center justify-center p-4">
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-center max-w-3xl"
-      >
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-          Discover Your <span className="text-accent">Personality Type</span>
-        </h1>
-        
-        <p className="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-          Have a conversation with our AI and uncover insights about your personality traits, strengths, and potential growth areas.
-        </p>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
 
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-violet-100 via-indigo-50 to-purple-100 flex flex-col items-center justify-center p-4 overflow-hidden">
+      <motion.div 
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className="text-center max-w-4xl relative z-10"
+      >
+        {/* Floating elements in background */}
+        <motion.div 
+          animate={{ 
+            y: [0, -15, 0],
+            rotate: [0, 5, 0]
+          }}
+          transition={{ 
+            repeat: Infinity, 
+            duration: 6,
+            ease: "easeInOut" 
+          }}
+          className="absolute -top-20 -right-20 text-violet-300/30 z-0"
         >
-          <Button 
-            onClick={startPersonalityTest}
-            className="bg-accent hover:bg-accent/90 text-white py-6 px-8 text-lg rounded-full shadow-lg"
-          >
-            Start Your Personality Analysis
-          </Button>
+          <Brain size={120} />
+        </motion.div>
+        
+        <motion.div 
+          animate={{ 
+            y: [0, 20, 0],
+            x: [0, -10, 0],
+          }}
+          transition={{ 
+            repeat: Infinity, 
+            duration: 8,
+            ease: "easeInOut" 
+          }}
+          className="absolute -bottom-16 -left-10 text-indigo-300/30 z-0"
+        >
+          <Sparkles size={100} />
         </motion.div>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-          <div className="bg-white p-6 rounded-xl shadow-md">
-            <div className="text-accent text-xl font-semibold mb-2">Conversational</div>
-            <p className="text-gray-600">Simple chat interface that makes discovering your personality type feel like talking with a friend</p>
-          </div>
+        <motion.div variants={itemVariants} className="mb-6 relative">
+          <div className="absolute inset-0 blur-3xl bg-violet-300/20 rounded-full transform -translate-y-1/2"></div>
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 relative">
+            Discover Your <span className="relative">
+              <span className="bg-gradient-to-r from-violet-600 to-indigo-600 text-transparent bg-clip-text">Personality Type</span>
+              <motion.span 
+                className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-violet-500 to-indigo-400"
+                initial={{ width: 0 }}
+                animate={{ width: "100%" }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+              ></motion.span>
+            </span>
+          </h1>
           
-          <div className="bg-white p-6 rounded-xl shadow-md">
-            <div className="text-accent text-xl font-semibold mb-2">Insightful</div>
-            <p className="text-gray-600">Detailed analysis of your personality traits, strengths, weaknesses, and growth opportunities</p>
-          </div>
+          <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto relative z-10">
+            Have an insightful conversation with our AI and uncover the unique traits that make you who you are.
+          </p>
+        </motion.div>
+
+        <motion.div variants={itemVariants}>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            className="my-10"
+          >
+            <Button 
+              onClick={startPersonalityTest}
+              className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white py-8 px-10 text-lg md:text-xl rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 font-medium"
+            >
+              <Sparkles className="mr-2 h-6 w-6" /> 
+              Begin Your Personality Journey
+            </Button>
+          </motion.div>
+        </motion.div>
+
+        <motion.div 
+          variants={containerVariants} 
+          initial="hidden"
+          animate="visible"
+          className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6 text-left"
+        >
+          <motion.div variants={itemVariants} whileHover={{ y: -5 }} className="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-violet-100">
+            <div className="bg-violet-100 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+              <MessageSquare className="text-violet-600 h-6 w-6" />
+            </div>
+            <div className="text-violet-600 text-xl font-semibold mb-3">Conversational</div>
+            <p className="text-gray-700">Engage in a natural dialogue that feels like chatting with a friend who really understands you</p>
+          </motion.div>
           
-          <div className="bg-white p-6 rounded-xl shadow-md">
-            <div className="text-accent text-xl font-semibold mb-2">Quick</div>
-            <p className="text-gray-600">Complete your personality assessment in just a few minutes of conversation</p>
+          <motion.div variants={itemVariants} whileHover={{ y: -5 }} transition={{ delay: 0.1 }} className="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-violet-100">
+            <div className="bg-purple-100 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+              <Brain className="text-purple-600 h-6 w-6" />
+            </div>
+            <div className="text-purple-600 text-xl font-semibold mb-3">Insightful</div>
+            <p className="text-gray-700">Get detailed analysis of your personality traits, strengths, weaknesses, and growth opportunities</p>
+          </motion.div>
+          
+          <motion.div variants={itemVariants} whileHover={{ y: -5 }} transition={{ delay: 0.2 }} className="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-violet-100">
+            <div className="bg-indigo-100 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+              <Zap className="text-indigo-600 h-6 w-6" />
+            </div>
+            <div className="text-indigo-600 text-xl font-semibold mb-3">Quick & Easy</div>
+            <p className="text-gray-700">Complete your personality assessment in just a few minutes of engaging conversation</p>
+          </motion.div>
+        </motion.div>
+
+        <motion.div 
+          variants={itemVariants} 
+          className="mt-16 text-center text-gray-600 text-sm"
+        >
+          <p>Discover the authentic you through AI-powered personality insights</p>
+          <div className="flex items-center justify-center mt-2">
+            <Heart className="h-4 w-4 text-red-400 mr-1" />
+            <span>No sign up required</span>
           </div>
-        </div>
+        </motion.div>
       </motion.div>
     </div>
   );
