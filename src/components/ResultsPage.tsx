@@ -7,6 +7,7 @@ import { Separator } from '@/components/ui/separator';
 import { PersonalityTypeData } from '@/services/api';
 import { motion } from 'framer-motion';
 import { Star, Users, Heart, ArrowLeft, Brain, Sparkles, BadgeCheck, AlarmClock } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import confetti from 'canvas-confetti';
 
 // Animation variants for staggered animation
@@ -173,18 +174,36 @@ const ResultsPage: React.FC = () => {
               </div>
               Famous People With Your Personality Type
             </h3>
-            <div className="flex flex-wrap gap-3">
-              {personalityData.famous_examples.map((person, index) => (
-                <motion.span 
-                  key={index} 
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 1.2 + (index * 0.1) }}
-                  className="px-5 py-3 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-full text-purple-800 font-medium shadow-sm"
-                >
-                  {person}
-                </motion.span>
-              ))}
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-4">
+              {personalityData.famous_examples.map((person, index) => {
+                const imageUrl = personalityData.images[person];
+                
+                return (
+                  <motion.div 
+                    key={index} 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 1.2 + (index * 0.1) }}
+                    className="flex flex-col items-center"
+                  >
+                    <div className="relative mb-3">
+                      <div className="absolute inset-0 bg-gradient-to-br from-purple-200 to-indigo-200 rounded-full blur-md"></div>
+                      <Avatar className="w-24 h-24 border-2 border-white shadow-lg relative">
+                        <AvatarImage 
+                          src={imageUrl} 
+                          alt={person} 
+                          className="object-cover"
+                        />
+                        <AvatarFallback className="bg-gradient-to-br from-purple-400 to-indigo-400 text-white text-lg">
+                          {person.split(' ').map(word => word[0]).join('')}
+                        </AvatarFallback>
+                      </Avatar>
+                    </div>
+                    <span className="font-medium text-purple-800 text-center">{person}</span>
+                  </motion.div>
+                );
+              })}
             </div>
           </Card>
         </motion.div>

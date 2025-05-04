@@ -13,6 +13,9 @@ export interface PersonalityTypeData {
   famous_examples: string[];
   strengths: string[];
   weaknesses: string[];
+  images?: {
+    [key: string]: string;
+  };
 }
 
 export interface ChatResponse {
@@ -111,7 +114,12 @@ const mockApiResponse = (message: string, userId: string): ChatResponse => {
         characteristics: ["Inventive", "Witty", "Argumentative", "Resourceful"],
         famous_examples: ["Thomas Edison", "Sacha Baron Cohen", "Tom Hanks"],
         strengths: ["Quick-witted", "Innovative", "Charismatic", "Debate-savvy"],
-        weaknesses: ["Argumentative", "Insensitive", "Can be unfocused", "Dislikes routine"]
+        weaknesses: ["Argumentative", "Insensitive", "Can be unfocused", "Dislikes routine"],
+        images: {
+          "Thomas Edison": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Thomas_Edison2.jpg",
+          "Sacha Baron Cohen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Sacha_Baron_Cohen_2019_by_Glenn_Francis.jpg/800px-Sacha_Baron_Cohen_2019_by_Glenn_Francis.jpg",
+          "Tom Hanks": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Tom_Hanks_TIFF_2019.jpg/800px-Tom_Hanks_TIFF_2019.jpg"
+        }
       }
     };
   }
