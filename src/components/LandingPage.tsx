@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
@@ -120,7 +119,7 @@ const LandingPage: React.FC = () => {
           animate="visible"
           className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6 text-left"
         >
-          <motion.div variants={itemVariants} whileHover={{ y: -5 }} className="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-primary/10">
+          <motion.div variants={itemVariants} whileHover={{ y: -5 }} className="bg-card/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-primary/10">
             <div className="bg-primary/10 rounded-full w-12 h-12 flex items-center justify-center mb-4">
               <MessageSquare className="text-primary h-6 w-6" />
             </div>
@@ -128,7 +127,7 @@ const LandingPage: React.FC = () => {
             <p className="text-foreground">Engage in a natural dialogue that feels like chatting with a friend who really understands you</p>
           </motion.div>
           
-          <motion.div variants={itemVariants} whileHover={{ y: -5 }} transition={{ delay: 0.1 }} className="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-secondary/10">
+          <motion.div variants={itemVariants} whileHover={{ y: -5 }} transition={{ delay: 0.1 }} className="bg-card/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-secondary/10">
             <div className="bg-secondary/10 rounded-full w-12 h-12 flex items-center justify-center mb-4">
               <Brain className="text-secondary h-6 w-6" />
             </div>
@@ -136,7 +135,7 @@ const LandingPage: React.FC = () => {
             <p className="text-foreground">Get detailed analysis of your personality traits, strengths, weaknesses, and growth opportunities</p>
           </motion.div>
           
-          <motion.div variants={itemVariants} whileHover={{ y: -5 }} transition={{ delay: 0.2 }} className="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-accent/10">
+          <motion.div variants={itemVariants} whileHover={{ y: -5 }} transition={{ delay: 0.2 }} className="bg-card/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-accent/10">
             <div className="bg-accent/10 rounded-full w-12 h-12 flex items-center justify-center mb-4">
               <Zap className="text-accent h-6 w-6" />
             </div>

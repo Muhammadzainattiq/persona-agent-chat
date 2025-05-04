@@ -1,15 +1,14 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 210 20% 98%; /* #F8F9FA Light Gray */
-    --foreground: 210 11% 15%; /* #212529 Almost Black */
+    --background: 230 15% 10%; /* #181A20 Dark background */
+    --foreground: 210 20% 98%; /* #F8F9FA Light text */
 
-    --card: 0 0% 100%; /* #FFFFFF White */
-    --card-foreground: 210 11% 15%; /* #212529 Almost Black */
+    --card: 230 12% 16%; /* #23262F Card dark */
+    --card-foreground: 210 20% 98%; /* #F8F9FA Light text */
 
     --popover: 0 0% 100%; /* #FFFFFF White */
     --popover-foreground: 210 11% 15%; /* #212529 Almost Black */

@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -78,7 +77,7 @@ const ResultsPage: React.FC = () => {
               Your Personality Type: <span className="bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text">{personalityData.type.toUpperCase()}</span>
             </h1>
           </div>
-          <div className="bg-white/70 backdrop-blur-sm px-6 py-3 rounded-full inline-block shadow-md">
+          <div className="bg-card/70 backdrop-blur-sm px-6 py-3 rounded-full inline-block shadow-md">
             <h2 className="text-2xl md:text-3xl text-foreground font-medium flex items-center justify-center">
               <span className="mr-2">✨</span>
               "{personalityData.nickname}"
@@ -88,7 +87,7 @@ const ResultsPage: React.FC = () => {
         </motion.div>
 
         <motion.div variants={itemVariants}>
-          <Card className="bg-white/90 backdrop-blur-sm shadow-xl p-8 mb-8 border-primary/10">
+          <Card className="bg-card/90 backdrop-blur-sm shadow-xl p-8 mb-8 border-primary/10">
             <div className="text-center mb-6">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-primary to-secondary mb-4">
                 <Sparkles className="h-8 w-8 text-white" />
@@ -114,7 +113,7 @@ const ResultsPage: React.FC = () => {
         
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           <motion.div variants={itemVariants}>
-            <Card className="bg-white/90 backdrop-blur-sm shadow-xl p-8 h-full border-primary/10 overflow-hidden relative">
+            <Card className="bg-card/90 backdrop-blur-sm shadow-xl p-8 h-full border-primary/10 overflow-hidden relative">
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-success/10 to-success/5 rounded-full -mr-16 -mt-16 opacity-70"></div>
               <h3 className="text-2xl font-semibold text-foreground mb-6 flex items-center relative z-10">
                 <div className="bg-success/10 p-2 rounded-full mr-3">
@@ -140,7 +139,7 @@ const ResultsPage: React.FC = () => {
           </motion.div>
           
           <motion.div variants={itemVariants}>
-            <Card className="bg-white/90 backdrop-blur-sm shadow-xl p-8 h-full border-primary/10 overflow-hidden relative">
+            <Card className="bg-card/90 backdrop-blur-sm shadow-xl p-8 h-full border-primary/10 overflow-hidden relative">
               <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-accent/10 to-accent/5 rounded-full -ml-16 -mt-16 opacity-70"></div>
               <h3 className="text-2xl font-semibold text-foreground mb-6 flex items-center relative z-10">
                 <div className="bg-accent/10 p-2 rounded-full mr-3">
@@ -167,7 +166,7 @@ const ResultsPage: React.FC = () => {
         </div>
 
         <motion.div variants={itemVariants}>
-          <Card className="bg-white/90 backdrop-blur-sm shadow-xl p-8 border-primary/10 mb-8">
+          <Card className="bg-card/90 backdrop-blur-sm shadow-xl p-8 border-primary/10 mb-8">
             <h3 className="text-2xl font-semibold text-foreground mb-6 flex items-center">
               <div className="bg-secondary/10 p-2 rounded-full mr-3">
                 <Users className="h-5 w-5 text-secondary" />
